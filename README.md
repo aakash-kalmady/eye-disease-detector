@@ -4,13 +4,13 @@ _This entire application is encapsulated within a Docker container, ready for de
 
 ## Technology Stack
 
-| Area                 | Technologies Used                 |
-| -------------------- | --------------------------------- |
-| **Backend & API**    | Python, Flask, Gunicorn           |
-| **Machine Learning** | TensorFlow, Keras, Scikit-learn   |
-| **Image Processing** | OpenCV, Pillow                    |
-| **Containerization** | Docker                            |
-| **Cloud Deployment** | AWS EC2, Nginx (as Reverse Proxy) |
+| Area                        | Technologies Used               |
+| --------------------------- | ------------------------------- |
+| **Backend & API**           | Python, Flask                   |
+| **Machine Learning**        | TensorFlow, Keras, Scikit-learn |
+| **Image Processing**        | OpenCV                          |
+| **Containerization**        | Docker                          |
+| **Future Cloud Deployment** | AWS EC2                         |
 
 ---
 
@@ -18,7 +18,7 @@ _This entire application is encapsulated within a Docker container, ready for de
 
 #### Dataset
 
-The model was trained on a dataset of over 4000 retinal fundus images, categorized into four classes: Normal, Diabetic Retinopathy, Glaucoma, and Macular Degeneration.
+The model was trained on a dataset of over 4000 retinal fundus images, categorized into four classes: Normal, Diabetic Retinopathy, Glaucoma, and Cataract.
 
 #### Preprocessing & Augmentation
 
@@ -32,8 +32,8 @@ To enhance model robustness and prevent overfitting, each image undergoes a prep
 
 The CNN model was trained in a Google Colab environment, leveraging GPU acceleration. The complete, documented training process is available in the project repository to ensure transparency and reproducibility.
 
-- **Training Notebook:** `[/notebooks/retinal_scan_training.ipynb](https://www.google.com/search?q=%2Fnotebooks%2Fretinal_scan_training.ipynb)`
-- **Trained Model:** The final trained weights are stored in an H5 file (`model/retinal_model.h5`).
+- **Training Notebook:** `/notebooks/eye_disease_ml.ipynb`
+- **Trained Model:** The final trained weights are stored in an H5 file (`/eye_disease_model.h5`).
 
 ---
 
