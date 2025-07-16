@@ -5,7 +5,7 @@ import tensorflow as tf
 from flask import Flask, request, render_template, jsonify
 
 # Initialize the Flask application
-app = Flask("eye-disease-detector")
+app = Flask(__name__)
 
 # Machine Learning Model Configuration
 # Path to the trained model
