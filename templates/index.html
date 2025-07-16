@@ -3,9 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Eye Disease Detector</title>
   </head>
   <body>
-    <div>Hello World</div>
+    <h1>Eye Disease Classification</h1>
+    <p>Upload a retinal scan to classify the eye condition.</p>
+
+    <form
+      id="upload-form"
+      action="/predict"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <input type="file" name="file" accept="image/*" required />
+      <br /><br />
+      <input type="submit" value="Classify Image" />
+    </form>
+
+    <div id="spinner" style="display: none">Loading...</div>
+    <div id="result"></div>
+
+    <script>
+      document
+        .getElementById("upload-form")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const formData = new FormData(this);
+          const resultDiv = document.getElementById("result");
+          const spinner = document.getElementById("spinner");
+
+          // Show spinner and clear previous result
+          spinner.style.display = "block";
+          resultDiv.innerHTML = "";
+
+          try {
+            const response = await fetch("/predict", {
+              method: "POST",
+              body: formData,
+            });
+            const data = await response.json();
+
+            if (data.error) {
+              resultDiv.innerHTML = `<span style="color: red;">Error: ${data.error}</span>`;
+            } else {
+              resultDiv.innerHTML = `<strong>Prediction:</strong> ${data.prediction} <br> <strong>Confidence:</strong> ${data.confidence}`;
+            }
+          } catch (error) {
+            resultDiv.innerHTML = `<span style="color: red;">An unexpected error occurred. Please try again.</span>`;
+          } finally {
+            // Hide spinner
+            spinner.style.display = "none";
+          }
+        });
+    </script>
   </body>
 </html>
